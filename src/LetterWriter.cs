@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LetterWritersMailman
 {
-    class LetterWriter : BaseThread, IStaffMonitor
+    class LetterWriter : BaseThread, IStaff
     {
         public string writerName;
         private MovingWindows productivity;

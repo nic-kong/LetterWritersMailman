@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LetterWritersMailman
 {
-    interface IStaffMonitor
+    interface IStaff
     {
         int Productivity { get; }
 

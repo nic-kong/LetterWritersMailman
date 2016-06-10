@@ -48,7 +48,7 @@ namespace LetterWritersMailman
 
                 DoWork();
             }
-            Console.WriteLine("worker thread ({0}): terminating gracefully.", Thread.CurrentThread.Name);
+            Console.WriteLine("thread ({0}) terminates gracefully", Thread.CurrentThread.ManagedThreadId);
         }
 
         protected abstract void DoWork();

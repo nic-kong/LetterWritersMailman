@@ -45,7 +45,7 @@
     <Compile Include="BaseThread.cs" />
     <Compile Include="Boss.cs" />
     <Compile Include="FixedSizeCircularArray.cs" />
-    <Compile Include="IStaffMonitor.cs" />
+    <Compile Include="IStaff.cs" />
     <Compile Include="Letter.cs" />
     <Compile Include="LetterWriter.cs" />
     <Compile Include="Mailbox.cs" />

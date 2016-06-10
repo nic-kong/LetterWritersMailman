@@ -21,11 +21,10 @@ namespace LetterWritersMailman
         {
             var box = FindBox(letter);
             letter.ReceiveTime = DateTime.Now;
-            lock (box)
+            lock (box) // for main thread console only; otherwise, it is unnecessary
             {
                 box.Add(letter);
             }
-            Console.WriteLine("Added {0}'s letter", letter.SenderName);
         }
 
         private List<Letter> FindBox(Letter letter)
