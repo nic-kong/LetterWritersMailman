@@ -13,7 +13,13 @@ namespace LetterWritersMailman
 
         static void Main(string[] args)
         {
-            const int roundPerMins = 20;
+            Console.CancelKeyPress += delegate(object sender, ConsoleCancelEventArgs e)
+            {
+                e.Cancel = true;
+                quit = true;
+            };
+
+            const int roundPerMins = 15;
             const int numWriters = 5;
             const int numMailboxes = 10;
             var writers = new LetterWriter[numWriters] {
@@ -22,23 +28,22 @@ namespace LetterWritersMailman
                 new LetterWriter("Echo", roundPerMins), };
             var boss = new Boss()
             {
-                WakeupFrequency = 3000,
+                WakeupFrequency = 60000 / roundPerMins,
                 Staffs = writers,
             };
             var mailbox = new Mailbox(numMailboxes);
+            Singleton<Mailman>.Instance.Mailbox = mailbox;
 
-            Startup(writers, boss, mailbox);
-            DateTime startTime = DateTime.Now;
+            Startup(writers, boss, mailbox);            
 
-            ConsoleDisplay(mailbox, startTime);
+            ConsoleDisplay(mailbox);
 
             Cleanup(writers, boss);
         }
 
         private static void Startup(LetterWriter[] writers, Boss boss, Mailbox mailbox)
         {
-            // mailman gets ready for the post
-            Singleton<Mailman>.Instance.Mailbox = mailbox;
+            // mailman gets ready for the post            
             Singleton<Mailman>.Instance.Start();
             // writers get ready for boss' order
             writers.All(writer => { writer.Start(); return true; });
@@ -64,13 +69,9 @@ namespace LetterWritersMailman
             }
         }
 
-        private static void ConsoleDisplay(Mailbox mailbox, DateTime startTime)
+        private static void ConsoleDisplay(Mailbox mailbox)
         {
-            Console.CancelKeyPress += delegate(object sender, ConsoleCancelEventArgs e)
-            {
-                e.Cancel = true;
-                quit = true;
-            };
+            DateTime startTime = DateTime.Now;
             while (!quit)
             {
                 TimeSpan elapsedtime = DateTime.Now - startTime;

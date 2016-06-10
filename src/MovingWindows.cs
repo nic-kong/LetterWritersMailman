@@ -14,5 +14,10 @@ namespace LetterWritersMailman
         {
             get { return this.array.Sum(); }
         }
+
+        public void OverwritePrevWindow(int value)
+        {
+            base[-1] = value;
+        }
     }
 }

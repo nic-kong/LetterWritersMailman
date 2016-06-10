@@ -25,7 +25,7 @@ namespace LetterWritersMailman
 
         public void BossOrder()
         {
-            productivity.Add(1);
+            productivity.OverwritePrevWindow(1);
             Event.Set();
         }
 
