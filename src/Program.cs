@@ -77,20 +77,19 @@ namespace LetterWritersMailman
                 TimeSpan elapsedtime = DateTime.Now - startTime;
                 Console.WriteLine("Elapsed time: {0}", elapsedtime.ToString(@"mm\:ss"));
 
-                int total = 0;
+                var unionBox = new List<Letter>();
                 mailbox.Boxes.All(box =>
                 {
-                    List<Letter> tempBox;
                     lock (box)
                     {
-                        tempBox = box.ToList();
+                        unionBox.AddRange(box);
                     }
-                    var time = tempBox.Any() ? tempBox.Average(letter => letter.GetDeliveryTime().TotalMilliseconds) : 0;
-                    total += tempBox.Count;
-                    Console.Write("{0:0.0}/{1}, ", time, tempBox.Count);
                     return true;
                 });
-                Console.WriteLine("total: {0}", total);
+                var avgTime = unionBox.Any() ?
+                    unionBox.Average(letter => letter.GetDeliveryTime().TotalMilliseconds) :
+                    0;
+                Console.WriteLine("avg time: {0:0.000}ms, total: {1}", avgTime, unionBox.Count);
 
                 Thread.Sleep(60000);
             }
