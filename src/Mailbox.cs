@@ -29,7 +29,7 @@ namespace LetterWritersMailman
 
         private List<Letter> FindBox(Letter letter)
         {
-            uint index = (uint)letter.GetHashCode() % (uint)Boxes.Length;
+            uint index = (uint)letter.Address.GetHashCode() % (uint)Boxes.Length;
             return Boxes[index];
         }
     }

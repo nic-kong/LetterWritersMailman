@@ -26,9 +26,9 @@ namespace LetterWritersMailman
                 new LetterWriter("Anna", roundPerMins), new LetterWriter("Bard", roundPerMins),
                 new LetterWriter("Cara", roundPerMins), new LetterWriter("Demi", roundPerMins),
                 new LetterWriter("Echo", roundPerMins), };
-            var boss = new Boss()
+            var boss = new Boss(60000 / roundPerMins)
             {
-                WakeupFrequency = 60000 / roundPerMins,
+                ProductivityTarget = 15,
                 Staffs = writers,
             };
             var mailbox = new Mailbox(numMailboxes);

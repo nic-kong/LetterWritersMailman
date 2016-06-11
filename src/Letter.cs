@@ -29,10 +29,5 @@ namespace LetterWritersMailman
         {
             return ReceiveTime - SendTime;
         }
-
-        public override int GetHashCode()
-        {
-            return Address.GetHashCode();
-        }
     }
 }

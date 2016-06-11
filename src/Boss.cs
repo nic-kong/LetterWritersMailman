@@ -11,12 +11,19 @@ namespace LetterWritersMailman
     class Boss
     {
         private Timer timer;
-        public int WakeupFrequency { private get; set; }
+        private int wakeupFrequency;
+        public int ProductivityTarget { private get; set; }
         public IStaff[] Staffs { get; set; }
+
+        public Boss(int wakeupFrequency)
+        {
+            this.wakeupFrequency = wakeupFrequency;
+        }
 
         public void Start()
         {
-            timer = new Timer(AssignJob, null, 0, WakeupFrequency); // Wake up every 4 secs
+            if (timer == null)
+                timer = new Timer(AssignJob, null, 0, wakeupFrequency); // Wake up every 4 secs
         }
 
         public void Stop()
@@ -48,7 +55,7 @@ namespace LetterWritersMailman
             if (freeStaffs.Any())
             {
                 int teamProductivity = Staffs.Sum(staff => staff.Productivity);
-                if (teamProductivity < 15) // boss thinks team can work harder
+                if (teamProductivity < ProductivityTarget) // boss thinks team can work harder
                 {
                     // find the staff with lowest workload
                     var freeStaff = freeStaffs.OrderBy(staff => staff.Productivity).First();
