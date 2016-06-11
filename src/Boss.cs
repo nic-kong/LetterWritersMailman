@@ -32,7 +32,7 @@ namespace LetterWritersMailman
                 timer.Dispose();
         }
 
-        private void AssignJob(object state)
+        protected void AssignJob(object state)
         {
             if (Staffs == null)
                 return;

@@ -55,6 +55,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton.cs" />
+    <Compile Include="test\FakeBoss.cs" />
+    <Compile Include="test\MockStaff.cs" />
+    <Compile Include="test\BossUT.cs" />
     <Compile Include="test\MovingWindowsUT.cs" />
   </ItemGroup>
   <ItemGroup>
