@@ -15,7 +15,7 @@ namespace LetterWritersMailman
             get { return this.array.Sum(); }
         }
 
-        public void PrevWindowIncrement(int value)
+        public void PrevWindowIncrement()
         {
             ++base[-1];
         }

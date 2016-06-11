@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LetterWritersMailman
+namespace LetterWritersMailman.test
 {
     [TestClass]
     public class MovingWindowsUT
@@ -53,16 +53,16 @@ namespace LetterWritersMailman
             windows.Add(1);
             Assert.AreEqual(1, windows[-1]);
 
-            windows.PrevWindowIncrement(1);
+            windows.PrevWindowIncrement();
             Assert.AreEqual(2, windows[-1]);
 
-            windows.PrevWindowIncrement(1);
+            windows.PrevWindowIncrement();
             Assert.AreEqual(3, windows[-1]);
 
             windows.Add(4);
             Assert.AreEqual(4, windows[-1]);
 
-            windows.PrevWindowIncrement(1);
+            windows.PrevWindowIncrement();
             Assert.AreEqual(5, windows[-1]);
             Assert.AreEqual(3, windows[-2]);
         }

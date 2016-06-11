@@ -29,7 +29,7 @@ namespace LetterWritersMailman
             set { array[At(index)] = value; }
         }
 
-        private ulong At(int index)
+        private uint At(int index)
         {
             return (next + (uint)index) % (uint)array.Length;
         }
