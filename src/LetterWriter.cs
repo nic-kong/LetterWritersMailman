@@ -12,7 +12,7 @@ namespace LetterWritersMailman
         public string writerName;
         private MovingWindows productivity;
 
-        public LetterWriter(string writerName, int roundPerCycle) : base()
+        public LetterWriter(string writerName, uint roundPerCycle) : base()
         {
             this.writerName = writerName;
             this.productivity = new MovingWindows(roundPerCycle);

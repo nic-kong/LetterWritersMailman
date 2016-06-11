@@ -9,16 +9,16 @@ namespace LetterWritersMailman
     class FixedSizeCircularArray<T>
     {
         protected readonly T[] array;
-        private ulong next;
+        private uint next;
 
-        public FixedSizeCircularArray(int size)
+        public FixedSizeCircularArray(uint size)
         {
             this.array = new T[size];
         }
 
         public void Add(T value)
         {
-            ulong pos = next % (ulong)array.Length;
+            uint pos = next % (uint)array.Length;
             array[pos] = value;
             ++next;
         }
@@ -31,7 +31,7 @@ namespace LetterWritersMailman
 
         private ulong At(int index)
         {
-            return (next + (ulong)index) % (ulong)array.Length;
+            return (next + (uint)index) % (uint)array.Length;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace LetterWritersMailman
 {
     class MovingWindows : FixedSizeCircularArray<int>
     {
-        public MovingWindows(int size) : base(size) { }
+        public MovingWindows(uint size) : base(size) { }
 
         public int Total
         {
